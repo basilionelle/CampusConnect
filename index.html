@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    <style>
+        @supports (font: -apple-system-body) {
+            body { font-feature-settings: 'kern'; -webkit-font-smoothing: antialiased; }
+        }
+    </style>
+</head>
+<body>
+    <main class="content">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-top">
+                    <div class="hero">
+                        <h1 class="title">Platform</h1>
+                        <p class="subtitle">Join the revolution today. Suggest new apps</p>
+                    </div>
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Find Apps" />
+                    </div>
+                </div>
+                
+                <div class="categories">
+                    <button class="category-tag active" data-category="all">All</button>
+                    <button class="category-tag" data-category="new">
+                        <i class="fa-light fa-sparkles"></i> New
+                    </button>
+                    <button class="category-tag" data-category="popular">
+                        <i class="fa-light fa-fire"></i> Popular
+                    </button>
+                    <button class="category-tag" data-category="analytics">Analytics</button>
+                    <button class="category-tag" data-category="blog">Blog</button>
+                    <button class="category-tag" data-category="bookmarks">Bookmarks</button>
+                    <button class="category-tag" data-category="chat">Chat</button>
+                    <button class="category-tag" data-category="dashboard">Dashboard</button>
+                    <button class="category-tag highlight" data-category="development">Development</button>
+                    <button class="category-tag" data-category="documentation">Documentation</button>
+                    <button class="category-tag" data-category="email">Email</button>
+                    <button class="category-tag" data-category="food">
+                        <i class="fa-light fa-bowl-chopsticks"></i> Food
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="app-grid">
+            <!-- App cards will be dynamically generated -->
+        </div>
+    </main>
+
+    <div class="app-frame" style="display: none;">
+        <div class="app-frame-header">
+            <button class="back-to-grid">
+                <i class="fas fa-arrow-left"></i>
+                Back to Apps
+            </button>
+        </div>
+        <iframe class="app-content" frameborder="0"></iframe>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

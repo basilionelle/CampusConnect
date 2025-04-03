@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArcherEye - Analytics Platform</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="app-styles.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
+    <style>
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: white;
+            border-radius: var(--app-radius);
+            padding: 1.5rem;
+            box-shadow: var(--app-shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .metric-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .metric-trend {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .trend-up {
+            color: #4CAF50;
+        }
+
+        .trend-down {
+            color: #FF5252;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: var(--app-radius);
+            padding: 1.5rem;
+            box-shadow: var(--app-shadow);
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .chart-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .chart-btn {
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: white;
+            color: var(--text);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .chart-btn:hover {
+            background: var(--surface-hover);
+        }
+
+        .chart-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .student-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .student-card {
+            background: white;
+            border-radius: var(--app-radius);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .student-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--app-shadow);
+        }
+
+        .student-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .student-info {
+            flex: 1;
+        }
+
+        .student-name {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .student-details {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .student-score {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.25rem;
+        }
+
+        .score-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .score-trend {
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .performance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .performance-card {
+            background: white;
+            border-radius: var(--app-radius);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .performance-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .performance-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .performance-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .subject-progress {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: var(--app-radius);
+            margin-bottom: 0.75rem;
+        }
+
+        .subject-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .subject-info {
+            flex: 1;
+        }
+
+        .subject-name {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(0,0,0,0.05);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .subject-stats {
+            text-align: right;
+            font-size: 0.9rem;
+        }
+
+        .stats-value {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .stats-label {
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body class="app-page archereye">
+    <header class="app-header">
+        <div class="header-content">
+            <a href="../index.html" class="back-button">
+                <i class="fa-light fa-chevron-left"></i>
+                Back to Apps
+            </a>
+            <div class="app-brand">
+                <i class="fa-light fa-chart-mixed app-icon"></i>
+                <h1>ArcherEye</h1>
+            </div>
+            <nav class="app-nav">
+                <a href="#" class="active"><i class="fa-light fa-chart-line"></i> Dashboard</a>
+                <a href="#"><i class="fa-light fa-brain-circuit"></i> Insights</a>
+                <a href="#"><i class="fa-light fa-users"></i> Students</a>
+                <a href="#"><i class="fa-light fa-gear"></i> Settings</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="app-main">
+        <section class="content-section">
+            <div class="section-header">
+                <h2>Performance Overview</h2>
+                <div class="header-actions">
+                    <button class="action-btn"><i class="fa-light fa-file-export"></i> Export Report</button>
+                    <button class="action-btn primary"><i class="fa-light fa-plus"></i> New Analysis</button>
+                </div>
+            </div>
+
+            <div class="analytics-grid">
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-title">Average Score</span>
+                        <i class="fa-light fa-chart-line"></i>
+                    </div>
+                    <div class="metric-value">87.5</div>
+                    <div class="metric-trend trend-up">
+                        <i class="fa-light fa-arrow-up"></i>
+                        <span>3.2% vs last month</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-title">Completion Rate</span>
+                        <i class="fa-light fa-check-circle"></i>
+                    </div>
+                    <div class="metric-value">92%</div>
+                    <div class="metric-trend trend-up">
+                        <i class="fa-light fa-arrow-up"></i>
+                        <span>5.7% vs last month</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-title">Active Students</span>
+                        <i class="fa-light fa-users"></i>
+                    </div>
+                    <div class="metric-value">1,248</div>
+                    <div class="metric-trend trend-down">
+                        <i class="fa-light fa-arrow-down"></i>
+                        <span>1.3% vs last month</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Performance Trends</h3>
+                    <div class="chart-actions">
+                        <button class="chart-btn">Day</button>
+                        <button class="chart-btn active">Week</button>
+                        <button class="chart-btn">Month</button>
+                        <button class="chart-btn">Year</button>
+                    </div>
+                </div>
+                <div class="chart-content" style="height: 300px; background: #f5f5f5; border-radius: 12px;">
+                    <!-- Chart would be rendered here using a charting library -->
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h3>Top Performing Students</h3>
+                <button class="action-btn">View All</button>
+            </div>
+
+            <div class="student-list">
+                <div class="student-card">
+                    <img src="https://i.pravatar.cc/150?u=1" alt="Emma Wilson" class="student-avatar">
+                    <div class="student-info">
+                        <div class="student-name">Emma Wilson</div>
+                        <div class="student-details">Computer Science • Year 2</div>
+                    </div>
+                    <div class="student-score">
+                        <div class="score-value">98.5</div>
+                        <div class="score-trend trend-up">
+                            <i class="fa-light fa-arrow-up"></i>
+                            <span>4.2%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="https://i.pravatar.cc/150?u=2" alt="James Chen" class="student-avatar">
+                    <div class="student-info">
+                        <div class="student-name">James Chen</div>
+                        <div class="student-details">Data Science • Year 3</div>
+                    </div>
+                    <div class="student-score">
+                        <div class="score-value">97.8</div>
+                        <div class="score-trend trend-up">
+                            <i class="fa-light fa-arrow-up"></i>
+                            <span>3.8%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="student-card">
+                    <img src="https://i.pravatar.cc/150?u=3" alt="Sarah Park" class="student-avatar">
+                    <div class="student-info">
+                        <div class="student-name">Sarah Park</div>
+                        <div class="student-details">Mathematics • Year 2</div>
+                    </div>
+                    <div class="student-score">
+                        <div class="score-value">96.4</div>
+                        <div class="score-trend trend-up">
+                            <i class="fa-light fa-arrow-up"></i>
+                            <span>2.9%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="side-panel">
+            <div class="section-header">
+                <h3>Subject Performance</h3>
+                <button class="action-btn"><i class="fa-light fa-filter"></i> Filter</button>
+            </div>
+
+            <div class="subject-list">
+                <div class="subject-progress">
+                    <div class="subject-icon" style="background: rgba(76, 175, 80, 0.1); color: #4CAF50;">
+                        <i class="fa-light fa-infinity"></i>
+                    </div>
+                    <div class="subject-info">
+                        <div class="subject-name">Mathematics</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 92%; background: #4CAF50;"></div>
+                        </div>
+                    </div>
+                    <div class="subject-stats">
+                        <div class="stats-value">92%</div>
+                        <div class="stats-label">Average</div>
+                    </div>
+                </div>
+
+                <div class="subject-progress">
+                    <div class="subject-icon" style="background: rgba(33, 150, 243, 0.1); color: #2196F3;">
+                        <i class="fa-light fa-laptop-code"></i>
+                    </div>
+                    <div class="subject-info">
+                        <div class="subject-name">Programming</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 88%; background: #2196F3;"></div>
+                        </div>
+                    </div>
+                    <div class="subject-stats">
+                        <div class="stats-value">88%</div>
+                        <div class="stats-label">Average</div>
+                    </div>
+                </div>
+
+                <div class="subject-progress">
+                    <div class="subject-icon" style="background: rgba(156, 39, 176, 0.1); color: #9C27B0;">
+                        <i class="fa-light fa-atom"></i>
+                    </div>
+                    <div class="subject-info">
+                        <div class="subject-name">Physics</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%; background: #9C27B0;"></div>
+                        </div>
+                    </div>
+                    <div class="subject-stats">
+                        <div class="stats-value">85%</div>
+                        <div class="stats-label">Average</div>
+                    </div>
+                </div>
+
+                <div class="subject-progress">
+                    <div class="subject-icon" style="background: rgba(255, 152, 0, 0.1); color: #FF9800;">
+                        <i class="fa-light fa-flask"></i>
+                    </div>
+                    <div class="subject-info">
+                        <div class="subject-name">Chemistry</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 83%; background: #FF9800;"></div>
+                        </div>
+                    </div>
+                    <div class="subject-stats">
+                        <div class="stats-value">83%</div>
+                        <div class="stats-label">Average</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h3>Quick Stats</h3>
+            </div>
+
+            <div class="performance-grid">
+                <div class="performance-card">
+                    <div class="performance-icon" style="background: rgba(76, 175, 80, 0.1); color: #4CAF50;">
+                        <i class="fa-light fa-check-circle"></i>
+                    </div>
+                    <div class="performance-value">95%</div>
+                    <div class="performance-label">Attendance Rate</div>
+                </div>
+
+                <div class="performance-card">
+                    <div class="performance-icon" style="background: rgba(33, 150, 243, 0.1); color: #2196F3;">
+                        <i class="fa-light fa-clock"></i>
+                    </div>
+                    <div class="performance-value">4.2h</div>
+                    <div class="performance-label">Study Time/Day</div>
+                </div>
+
+                <div class="performance-card">
+                    <div class="performance-icon" style="background: rgba(156, 39, 176, 0.1); color: #9C27B0;">
+                        <i class="fa-light fa-trophy"></i>
+                    </div>
+                    <div class="performance-value">12</div>
+                    <div class="performance-label">Achievements</div>
+                </div>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>

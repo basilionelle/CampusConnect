@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in - Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div class="landing-page" id="landing">
+        <div class="auth-container">
+            <div class="auth-icon">
+                <i class="fa-duotone fa-book-bookmark"></i>
+            </div>
+            <h1 class="title">Platform</h1>
+            <p class="subtitle">Join the revolution today</p>
+            <form class="auth-form" id="authForm">
+                <div class="input-group">
+                    <i class="fa-light fa-user input-icon"></i>
+                    <input type="text" placeholder="Username or Email" required id="usernameInput">
+                </div>
+                <div class="input-group">
+                    <i class="fa-light fa-lock input-icon"></i>
+                    <input type="password" placeholder="Password" required id="passwordInput">
+                </div>
+                <button type="submit" class="auth-button">
+                    Sign in to Platform
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Marketplace Section -->
+    <div class="marketplace hidden" id="marketplace">
+        <!-- Content from index.html will be shown here after login -->
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

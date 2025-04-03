@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0057B7;
+            --secondary: #0098E5;
+            --text: rgba(255, 255, 255, 0.9);
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --background: #000;
+            --surface: rgba(255, 255, 255, 0.1);
+            --surface-hover: rgba(255, 255, 255, 0.15);
+            --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(165deg, var(--primary), var(--secondary));
+            min-height: 100vh;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            gap: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .back-button:hover {
+            background: var(--surface);
+        }
+
+        .content {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 1.5rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            height: fit-content;
+        }
+
+        .main-content {
+            flex: 1;
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 1.5rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .calendar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .month-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-button {
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .nav-button:hover {
+            background: var(--surface-hover);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .weekday {
+            text-align: center;
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .day {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 0.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--surface);
+        }
+
+        .day:hover {
+            background: var(--surface-hover);
+        }
+
+        .day.today {
+            background: var(--primary);
+        }
+
+        .day.has-events::after {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 50%;
+            margin: 2px auto 0;
+        }
+
+        .date-number {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .add-button {
+            background: var(--primary);
+            color: var(--text);
+            border: none;
+            padding: 0.75rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            margin-bottom: 1.5rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .add-button:hover {
+            filter: brightness(1.1);
+        }
+
+        .upcoming-events {
+            margin-top: 1.5rem;
+        }
+
+        .event-item {
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 0.75rem;
+            background: var(--surface);
+        }
+
+        .event-item:hover {
+            background: var(--surface-hover);
+        }
+
+        .event-time {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .event-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .event-location {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <button class="back-button" onclick="history.back()">←</button>
+        <h1>Calendar</h1>
+    </header>
+    <main class="content">
+        <aside class="sidebar">
+            <button class="add-button">
+                <i class="fas fa-plus"></i>
+                New Event
+            </button>
+            <div class="section-title">Upcoming Events</div>
+            <div class="upcoming-events">
+                <div class="event-item">
+                    <div class="event-time">Today, 2:00 PM</div>
+                    <div class="event-title">Team Meeting</div>
+                    <div class="event-location">
+                        <i class="fas fa-video"></i>
+                        Zoom Call
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-time">Today, 4:30 PM</div>
+                    <div class="event-title">Project Review</div>
+                    <div class="event-location">
+                        <i class="fas fa-building"></i>
+                        Conference Room A
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-time">Tomorrow, 10:00 AM</div>
+                    <div class="event-title">Client Presentation</div>
+                    <div class="event-location">
+                        <i class="fas fa-video"></i>
+                        Google Meet
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-time">Mar 18, 1:00 PM</div>
+                    <div class="event-title">Design Workshop</div>
+                    <div class="event-location">
+                        <i class="fas fa-building"></i>
+                        Design Lab
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <div class="main-content">
+            <div class="calendar-header">
+                <div class="month-nav">
+                    <button class="nav-button"><i class="fas fa-chevron-left"></i></button>
+                    <h2>March 2025</h2>
+                    <button class="nav-button"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="view-options">
+                    <button class="nav-button"><i class="fas fa-calendar-day"></i></button>
+                    <button class="nav-button"><i class="fas fa-calendar-week"></i></button>
+                    <button class="nav-button"><i class="fas fa-calendar"></i></button>
+                </div>
+            </div>
+            <div class="calendar-grid">
+                <div class="weekday">Sun</div>
+                <div class="weekday">Mon</div>
+                <div class="weekday">Tue</div>
+                <div class="weekday">Wed</div>
+                <div class="weekday">Thu</div>
+                <div class="weekday">Fri</div>
+                <div class="weekday">Sat</div>
+                
+                <!-- Previous month -->
+                <div class="day"><span class="date-number">25</span></div>
+                <div class="day"><span class="date-number">26</span></div>
+                <div class="day"><span class="date-number">27</span></div>
+                <div class="day"><span class="date-number">28</span></div>
+                
+                <!-- Current month -->
+                <div class="day has-events"><span class="date-number">1</span></div>
+                <div class="day"><span class="date-number">2</span></div>
+                <div class="day has-events"><span class="date-number">3</span></div>
+                <div class="day"><span class="date-number">4</span></div>
+                <div class="day has-events"><span class="date-number">5</span></div>
+                <div class="day"><span class="date-number">6</span></div>
+                <div class="day"><span class="date-number">7</span></div>
+                <div class="day has-events"><span class="date-number">8</span></div>
+                <div class="day"><span class="date-number">9</span></div>
+                <div class="day"><span class="date-number">10</span></div>
+                <div class="day has-events"><span class="date-number">11</span></div>
+                <div class="day"><span class="date-number">12</span></div>
+                <div class="day has-events"><span class="date-number">13</span></div>
+                <div class="day"><span class="date-number">14</span></div>
+                <div class="day"><span class="date-number">15</span></div>
+                <div class="day today has-events"><span class="date-number">16</span></div>
+                <div class="day has-events"><span class="date-number">17</span></div>
+                <div class="day has-events"><span class="date-number">18</span></div>
+                <div class="day"><span class="date-number">19</span></div>
+                <div class="day has-events"><span class="date-number">20</span></div>
+                <div class="day"><span class="date-number">21</span></div>
+                <div class="day"><span class="date-number">22</span></div>
+                <div class="day has-events"><span class="date-number">23</span></div>
+                <div class="day"><span class="date-number">24</span></div>
+                <div class="day has-events"><span class="date-number">25</span></div>
+                <div class="day"><span class="date-number">26</span></div>
+                <div class="day"><span class="date-number">27</span></div>
+                <div class="day has-events"><span class="date-number">28</span></div>
+                <div class="day"><span class="date-number">29</span></div>
+                <div class="day"><span class="date-number">30</span></div>
+                <div class="day"><span class="date-number">31</span></div>
+                
+                <!-- Next month -->
+                <div class="day"><span class="date-number">1</span></div>
+                <div class="day"><span class="date-number">2</span></div>
+                <div class="day"><span class="date-number">3</span></div>
+                <div class="day"><span class="date-number">4</span></div>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Add smooth navigation back
+        document.querySelector('.back-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.body.style.opacity = '0';
+            setTimeout(() => history.back(), 200);
+        });
+
+        // Smooth entrance
+        document.body.style.opacity = '0';
+        requestAnimationFrame(() => {
+            document.body.style.transition = 'opacity 0.3s ease';
+            document.body.style.opacity = '1';
+        });
+
+        // Handle day selection
+        document.querySelectorAll('.day').forEach(day => {
+            day.addEventListener('click', () => {
+                document.querySelectorAll('.day').forEach(d => d.style.background = '');
+                day.style.background = 'var(--surface-hover)';
+            });
+        });
+    </script>
+</body>
+</html>

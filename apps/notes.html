@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0057B7;
+            --secondary: #0098E5;
+            --text: rgba(255, 255, 255, 0.9);
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --background: #000;
+            --surface: rgba(255, 255, 255, 0.1);
+            --surface-hover: rgba(255, 255, 255, 0.15);
+            --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(165deg, var(--primary), var(--secondary));
+            min-height: 100vh;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            gap: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .back-button:hover {
+            background: var(--surface);
+        }
+
+        .content {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 1rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            height: fit-content;
+        }
+
+        .notes-list {
+            list-style: none;
+        }
+
+        .note-item {
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 0.5rem;
+        }
+
+        .note-item:hover {
+            background: var(--surface-hover);
+        }
+
+        .note-item.active {
+            background: var(--surface-hover);
+        }
+
+        .note-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .note-preview {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .main-content {
+            flex: 1;
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .editor {
+            width: 100%;
+            height: 100%;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.6;
+            resize: none;
+            outline: none;
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--surface-hover);
+        }
+
+        .tool-button {
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .tool-button:hover {
+            background: var(--surface-hover);
+        }
+
+        .add-button {
+            background: var(--primary);
+            color: var(--text);
+            border: none;
+            padding: 0.75rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            margin-bottom: 1rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .add-button:hover {
+            filter: brightness(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <button class="back-button" onclick="history.back()">←</button>
+        <h1>Notes</h1>
+    </header>
+    <main class="content">
+        <aside class="sidebar">
+            <button class="add-button">
+                <i class="fas fa-plus"></i>
+                New Note
+            </button>
+            <ul class="notes-list">
+                <li class="note-item active">
+                    <div class="note-title">Meeting Notes</div>
+                    <div class="note-preview">Team sync discussion about the new feature launch and timeline...</div>
+                </li>
+                <li class="note-item">
+                    <div class="note-title">Shopping List</div>
+                    <div class="note-preview">1. Groceries for dinner
+2. New headphones
+3. Birthday gift...</div>
+                </li>
+                <li class="note-item">
+                    <div class="note-title">Project Ideas</div>
+                    <div class="note-preview">1. Mobile app for task management
+2. Smart home dashboard...</div>
+                </li>
+                <li class="note-item">
+                    <div class="note-title">Reading List</div>
+                    <div class="note-preview">Books to read:
+1. Atomic Habits
+2. Deep Work...</div>
+                </li>
+            </ul>
+        </aside>
+        <div class="main-content">
+            <div class="toolbar">
+                <button class="tool-button"><i class="fas fa-bold"></i></button>
+                <button class="tool-button"><i class="fas fa-italic"></i></button>
+                <button class="tool-button"><i class="fas fa-underline"></i></button>
+                <button class="tool-button"><i class="fas fa-list"></i></button>
+                <button class="tool-button"><i class="fas fa-list-ol"></i></button>
+                <button class="tool-button"><i class="fas fa-link"></i></button>
+                <button class="tool-button"><i class="fas fa-image"></i></button>
+            </div>
+            <textarea class="editor" placeholder="Start typing...">Team Sync Meeting - March 16, 2025
+
+Attendees:
+- Sarah (Product)
+- Mike (Engineering)
+- Lisa (Design)
+- John (Marketing)
+
+Agenda:
+1. Feature Launch Timeline
+   - Beta testing starts next week
+   - Full release scheduled for April 1st
+   - Marketing campaign ready to go
+
+2. Key Updates
+   - User feedback implementation complete
+   - Performance improvements deployed
+   - New design system documentation ready
+
+3. Next Steps
+   - Schedule user testing sessions
+   - Finalize release notes
+   - Prepare team announcements
+
+Action Items:
+[ ] Send beta invites to selected users
+[ ] Review final performance metrics
+[ ] Update documentation
+[ ] Schedule follow-up meeting</textarea>
+        </div>
+    </main>
+    <script>
+        // Add smooth navigation back
+        document.querySelector('.back-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.body.style.opacity = '0';
+            setTimeout(() => history.back(), 200);
+        });
+
+        // Smooth entrance
+        document.body.style.opacity = '0';
+        requestAnimationFrame(() => {
+            document.body.style.transition = 'opacity 0.3s ease';
+            document.body.style.opacity = '1';
+        });
+
+        // Handle note selection
+        document.querySelectorAll('.note-item').forEach(note => {
+            note.addEventListener('click', () => {
+                document.querySelectorAll('.note-item').forEach(n => n.classList.remove('active'));
+                note.classList.add('active');
+            });
+        });
+
+        // Auto-resize textarea
+        const textarea = document.querySelector('.editor');
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+        textarea.addEventListener('input', () => {
+            textarea.style.height = 'auto';
+            textarea.style.height = textarea.scrollHeight + 'px';
+        });
+    </script>
+</body>
+</html>

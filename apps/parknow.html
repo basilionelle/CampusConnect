@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkNow - Campus Parking Assistant</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="app-styles.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
+</head>
+<body class="app-page parknow">
+    <header class="app-header">
+        <div class="header-content">
+            <a href="../index.html" class="back-button">
+                <i class="fa-light fa-chevron-left"></i>
+                Back to Apps
+            </a>
+            <div class="app-brand">
+                <i class="fa-light fa-gauge-circle-bolt app-icon"></i>
+                <h1>ParkNow</h1>
+            </div>
+            <nav class="app-nav">
+                <a href="#" class="active"><i class="fa-light fa-map-location-dot"></i> Live Map</a>
+                <a href="#"><i class="fa-light fa-chart-line"></i> Trends</a>
+                <a href="#"><i class="fa-light fa-star"></i> Favorites</a>
+                <a href="#"><i class="fa-light fa-bell"></i> Alerts</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="app-main parking-layout">
+        <section class="map-section">
+            <div class="map-container">
+                <div class="map-overlay">
+                    <div class="lot-marker available" style="top: 30%; left: 20%;">
+                        <span class="spot-count">12</span>
+                        <span class="lot-name">North Lot</span>
+                    </div>
+                    <div class="lot-marker full" style="top: 45%; left: 60%;">
+                        <span class="spot-count">0</span>
+                        <span class="lot-name">Central Garage</span>
+                    </div>
+                    <div class="lot-marker limited" style="top: 70%; left: 40%;">
+                        <span class="spot-count">3</span>
+                        <span class="lot-name">South Lot</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="parking-sidebar">
+            <div class="quick-find">
+                <div class="section-header">
+                    <h2>Quick Find</h2>
+                    <button class="filter-btn"><i class="fa-light fa-sliders"></i></button>
+                </div>
+                <div class="search-box">
+                    <i class="fa-light fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search parking lots...">
+                </div>
+            </div>
+
+            <div class="lot-list">
+                <div class="lot-card available">
+                    <div class="lot-info">
+                        <h3>North Lot</h3>
+                        <p class="lot-details">
+                            <span class="spots-available">12 spots</span>
+                            <span class="walking-time"><i class="fa-light fa-person-walking"></i> 5 min</span>
+                        </p>
+                    </div>
+                    <div class="lot-actions">
+                        <button class="navigate-btn"><i class="fa-light fa-route"></i></button>
+                        <button class="favorite-btn"><i class="fa-light fa-star"></i></button>
+                    </div>
+                </div>
+
+                <div class="lot-card limited">
+                    <div class="lot-info">
+                        <h3>South Lot</h3>
+                        <p class="lot-details">
+                            <span class="spots-available">3 spots</span>
+                            <span class="walking-time"><i class="fa-light fa-person-walking"></i> 8 min</span>
+                        </p>
+                    </div>
+                    <div class="lot-actions">
+                        <button class="navigate-btn"><i class="fa-light fa-route"></i></button>
+                        <button class="favorite-btn active"><i class="fa-light fa-star"></i></button>
+                    </div>
+                </div>
+
+                <div class="lot-card full">
+                    <div class="lot-info">
+                        <h3>Central Garage</h3>
+                        <p class="lot-details">
+                            <span class="spots-available">Full</span>
+                            <span class="walking-time"><i class="fa-light fa-person-walking"></i> 2 min</span>
+                        </p>
+                    </div>
+                    <div class="lot-actions">
+                        <button class="navigate-btn"><i class="fa-light fa-route"></i></button>
+                        <button class="favorite-btn"><i class="fa-light fa-star"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prediction-panel">
+                <h3>Availability Forecast</h3>
+                <div class="time-slots">
+                    <div class="time-slot">
+                        <span class="time">Now</span>
+                        <span class="availability high">High</span>
+                    </div>
+                    <div class="time-slot">
+                        <span class="time">1 PM</span>
+                        <span class="availability medium">Medium</span>
+                    </div>
+                    <div class="time-slot">
+                        <span class="time">2 PM</span>
+                        <span class="availability low">Low</span>
+                    </div>
+                    <div class="time-slot">
+                        <span class="time">3 PM</span>
+                        <span class="availability low">Low</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <div class="toast-container">
+        <div class="toast info">
+            <i class="fa-light fa-circle-info"></i>
+            <span>Tip: Peak hours are between 1 PM - 3 PM. Plan accordingly!</span>
+        </div>
+    </div>
+</body>
+</html>

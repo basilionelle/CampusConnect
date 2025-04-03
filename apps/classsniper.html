@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassSniper - Smart Course Registration</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="app-styles.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
+</head>
+<body class="app-page classsniper">
+    <header class="app-header">
+        <div class="header-content">
+            <a href="../index.html" class="back-button">
+                <i class="fa-light fa-chevron-left"></i>
+                Back to Apps
+            </a>
+            <div class="app-brand">
+                <i class="fa-light fa-brackets-curly app-icon"></i>
+                <h1>ClassSniper</h1>
+            </div>
+            <nav class="app-nav">
+                <a href="#" class="active"><i class="fa-light fa-radar"></i> Watch List</a>
+                <a href="#"><i class="fa-light fa-books"></i> Courses</a>
+                <a href="#"><i class="fa-light fa-calendar"></i> Schedule</a>
+                <a href="#"><i class="fa-light fa-gear"></i> Settings</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="app-main">
+        <section class="content-section">
+            <div class="section-header">
+                <h2>Course Watch List</h2>
+                <button class="create-btn"><i class="fa-light fa-plus"></i> Add Course</button>
+            </div>
+            <div class="course-list">
+                <div class="course-card watching priority">
+                    <div class="course-status">
+                        <span class="status-badge full">Full</span>
+                        <span class="waitlist-position">#2 on waitlist</span>
+                        <span class="prediction">High chance at 8 AM</span>
+                    </div>
+                    <div class="course-info">
+                        <h3>CS 3100: Data Structures & Algorithms</h3>
+                        <p class="course-details">
+                            <span><i class="fa-light fa-user-tie"></i> Prof. Sarah Chen</span>
+                            <span><i class="fa-light fa-clock"></i> MWF 10:00 AM - 11:20 AM</span>
+                            <span><i class="fa-light fa-location-dot"></i> Tech 205</span>
+                            <span><i class="fa-light fa-users"></i> 120/120 enrolled</span>
+                            <span><i class="fa-light fa-star"></i> 4.8/5 (256 reviews)</span>
+                        </p>
+                        <div class="course-tags">
+                            <span class="tag required">Required</span>
+                            <span class="tag">Spring 2025</span>
+                            <span class="tag">4 credits</span>
+                        </div>
+                    </div>
+                    <div class="course-actions">
+                        <button class="notification-btn active" title="Notifications On"><i class="fa-light fa-bell"></i></button>
+                        <button class="auto-register-btn active" title="Auto-Register On"><i class="fa-light fa-robot"></i></button>
+                        <button class="details-btn" title="View Details"><i class="fa-light fa-circle-info"></i></button>
+                        <button class="remove-btn" title="Remove from Watchlist"><i class="fa-light fa-xmark"></i></button>
+                    </div>
+                </div>
+
+                <div class="course-card watching success">
+                    <div class="course-status">
+                        <span class="status-badge open">1 Spot</span>
+                        <span class="spots-left">Attempting registration...</span>
+                        <span class="prediction">Register within 30s!</span>
+                    </div>
+                    <div class="course-info">
+                        <h3>MATH 2400: Linear Algebra</h3>
+                        <p class="course-details">
+                            <span><i class="fa-light fa-user-tie"></i> Prof. Michael Johnson</span>
+                            <span><i class="fa-light fa-clock"></i> TTh 2:30 PM - 3:50 PM</span>
+                            <span><i class="fa-light fa-location-dot"></i> Math 101</span>
+                            <span><i class="fa-light fa-users"></i> 79/80 enrolled</span>
+                            <span><i class="fa-light fa-star"></i> 4.6/5 (189 reviews)</span>
+                        </p>
+                        <div class="course-tags">
+                            <span class="tag required">Required</span>
+                            <span class="tag">Spring 2025</span>
+                            <span class="tag">3 credits</span>
+                        </div>
+                    </div>
+                    <div class="course-actions">
+                        <button class="notification-btn active" title="Notifications On"><i class="fa-light fa-bell"></i></button>
+                        <button class="auto-register-btn active" title="Auto-Register On"><i class="fa-light fa-robot"></i></button>
+                        <button class="details-btn" title="View Details"><i class="fa-light fa-circle-info"></i></button>
+                        <button class="remove-btn" title="Remove from Watchlist"><i class="fa-light fa-xmark"></i></button>
+                    </div>
+                </div>
+
+                <div class="course-card watching">
+                    <div class="course-status">
+                        <span class="status-badge limited">3 Spots</span>
+                        <span class="spots-left">Filling quickly</span>
+                        <span class="prediction">Medium chance</span>
+                    </div>
+                    <div class="course-info">
+                        <h3>PHYS 2100: Classical Mechanics</h3>
+                        <p class="course-details">
+                            <span><i class="fa-light fa-user-tie"></i> Prof. David Lee</span>
+                            <span><i class="fa-light fa-clock"></i> MWF 1:00 PM - 2:20 PM</span>
+                            <span><i class="fa-light fa-location-dot"></i> Physics 302</span>
+                            <span><i class="fa-light fa-users"></i> 87/90 enrolled</span>
+                            <span><i class="fa-light fa-star"></i> 4.3/5 (145 reviews)</span>
+                        </p>
+                        <div class="course-tags">
+                            <span class="tag required">Required</span>
+                            <span class="tag">Spring 2025</span>
+                            <span class="tag">4 credits</span>
+                        </div>
+                    </div>
+                    <div class="course-actions">
+                        <button class="notification-btn active" title="Notifications On"><i class="fa-light fa-bell"></i></button>
+                        <button class="auto-register-btn active" title="Auto-Register On"><i class="fa-light fa-robot"></i></button>
+                        <button class="details-btn" title="View Details"><i class="fa-light fa-circle-info"></i></button>
+                        <button class="remove-btn" title="Remove from Watchlist"><i class="fa-light fa-xmark"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="side-panel">
+            <div class="quick-stats">
+                <h3>Registration Stats</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-value">3</span>
+                        <span class="stat-label">Watching</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">4</span>
+                        <span class="stat-label">Available</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">5</span>
+                        <span class="stat-label">Registered</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">17</span>
+                        <span class="stat-label">Credits</span>
+                    </div>
+                </div>
+                <div class="registration-progress">
+                    <div class="progress-header">
+                        <span>Spring 2025 Progress</span>
+                        <span>17/18 credits</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 94%"></div>
+                    </div>
+                </div>
+                <div class="next-registration">
+                    <i class="fa-light fa-calendar-clock"></i>
+                    <div class="next-info">
+                        <span class="next-label">Next Registration Window</span>
+                        <span class="next-time">March 18, 8:00 AM</span>
+                    </div>
+                    <button class="calendar-btn" title="Add to Calendar"><i class="fa-light fa-calendar-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="notification-settings">
+                <h3>Notifications</h3>
+                <div class="settings-list">
+                    <label class="setting-item">
+                        <span class="setting-label">Push Notifications</span>
+                        <input type="checkbox" checked>
+                        <span class="toggle-switch"></span>
+                    </label>
+                    <label class="setting-item">
+                        <span class="setting-label">Email Alerts</span>
+                        <input type="checkbox" checked>
+                        <span class="toggle-switch"></span>
+                    </label>
+                    <label class="setting-item">
+                        <span class="setting-label">Auto-Register</span>
+                        <input type="checkbox" checked>
+                        <span class="toggle-switch"></span>
+                    </label>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <div class="toast-container">
+        <div class="toast success">
+            <i class="fa-light fa-check-circle"></i>
+            <span>Spot available in MATH 2400! Attempting auto-registration...</span>
+            <button class="toast-action">View</button>
+        </div>
+        <div class="toast info">
+            <i class="fa-light fa-circle-info"></i>
+            <span>Registration for Spring 2025 opens in 2 days</span>
+            <button class="toast-action">Set Reminder</button>
+        </div>
+        <div class="toast warning">
+            <i class="fa-light fa-triangle-exclamation"></i>
+            <span>PHYS 2100 is filling up quickly (3 spots left)</span>
+            <button class="toast-action">Enable Auto-Register</button>
+        </div>
+    </div>
+</body>
+</html>
