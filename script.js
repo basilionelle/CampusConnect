@@ -101,6 +101,19 @@ const apps = [
         screenshots: ['dashboard.png', 'session.png', 'schedule.png']
     },
     {
+        name: 'Calendar',
+        icon: 'fa-light fa-calendar-days',
+        category: 'dashboard',
+        description: 'Smart calendar for managing your academic schedule and deadlines.',
+        features: [
+            { icon: 'fa-light fa-calendar-check', text: 'Schedule management' },
+            { icon: 'fa-light fa-bell', text: 'Deadline reminders' },
+            { icon: 'fa-light fa-share-nodes', text: 'Schedule sharing' },
+            { icon: 'fa-light fa-calendar-sync', text: 'Sync with other apps' }
+        ],
+        screenshots: ['calendar.png', 'schedule.png', 'reminders.png']
+    },
+    {
         name: 'ArcherEye',
         icon: 'fa-light fa-chart-mixed',
         category: 'analytics',
@@ -115,20 +128,6 @@ const apps = [
         screenshots: ['dashboard.png', 'analytics.png', 'reports.png']
     },
     {
-        name: 'HomeworkHelp',
-        icon: 'fa-light fa-books',
-        category: 'documentation',
-        isPopular: true,
-        description: 'Collaborative platform for students to share notes, ask questions, and get help with assignments.',
-        features: [
-            { icon: 'fa-light fa-pen-to-square', text: 'Real-time collaboration' },
-            { icon: 'fa-light fa-message-question', text: 'Q&A forums' },
-            { icon: 'fa-light fa-cloud-arrow-up', text: 'Cloud storage for notes' },
-            { icon: 'fa-light fa-share-nodes', text: 'Easy sharing options' }
-        ],
-        screenshots: ['notes.png', 'questions.png', 'sharing.png']
-    },
-    {
         name: 'ClassSniper',
         icon: 'fa-light fa-brackets-curly',
         category: 'development',
@@ -140,47 +139,6 @@ const apps = [
             { icon: 'fa-light fa-clock-rotate-left', text: 'Waitlist tracking' }
         ],
         screenshots: ['courses.png', 'registration.png', 'schedule.png']
-    },
-    {
-        name: 'StudyGroups',
-        icon: 'fa-light fa-messages',
-        category: 'chat',
-        isNew: true,
-        description: 'Find and join study groups for your courses. Connect with classmates and collaborate effectively.',
-        features: [
-            { icon: 'fa-light fa-users', text: 'Group formation' },
-            { icon: 'fa-light fa-video', text: 'Video meetings' },
-            { icon: 'fa-light fa-calendar-lines', text: 'Study scheduling' },
-            { icon: 'fa-light fa-file-pdf', text: 'Resource sharing' }
-        ],
-        screenshots: ['groups.png', 'chat.png', 'calendar.png']
-    },
-    {
-        name: 'TutorFinder',
-        icon: 'fa-light fa-notebook',
-        category: 'documentation',
-        isPopular: true,
-        description: 'Find qualified tutors for any subject. Book sessions, manage payments, and track your progress.',
-        features: [
-            { icon: 'fa-light fa-magnifying-glass', text: 'Smart tutor matching' },
-            { icon: 'fa-light fa-credit-card', text: 'Secure payments' },
-            { icon: 'fa-light fa-star', text: 'Rating system' },
-            { icon: 'fa-light fa-calendar', text: 'Scheduling tools' }
-        ],
-        screenshots: ['tutors.png', 'booking.png', 'reviews.png']
-    },
-    {
-        name: 'SwipeStudy',
-        icon: 'fa-light fa-pen-circle',
-        category: 'blog',
-        description: 'Modern blogging platform designed for students to share study tips, notes, and academic experiences.',
-        features: [
-            { icon: 'fa-light fa-pen-fancy', text: 'Rich text editor' },
-            { icon: 'fa-light fa-tags', text: 'Smart tagging system' },
-            { icon: 'fa-light fa-share-all', text: 'Social sharing' },
-            { icon: 'fa-light fa-highlighter', text: 'Note highlighting' }
-        ],
-        screenshots: ['editor.png', 'posts.png', 'sharing.png']
     },
     {
         name: 'PriceDown',
@@ -213,99 +171,20 @@ const apps = [
         screenshots: ['events.png', 'messages.png', 'profile.png']
     },
     {
-        name: 'ParkNow',
-        icon: 'fa-light fa-gauge-circle-bolt',
-        category: 'dashboard',
-        description: 'Real-time campus parking availability tracker with smart space prediction.',
+        name: 'Notes',
+        icon: 'fa-light fa-note-sticky',
+        category: 'documentation',
+        description: 'Simple and efficient note-taking app for students.',
         features: [
-            { icon: 'fa-light fa-car', text: 'Space finder' },
-            { icon: 'fa-light fa-chart-simple', text: 'Occupancy trends' },
-            { icon: 'fa-light fa-route', text: 'Navigation' },
-            { icon: 'fa-light fa-timer', text: 'Time tracking' }
+            { icon: 'fa-light fa-pen', text: 'Quick notes' },
+            { icon: 'fa-light fa-folder-tree', text: 'Organization' },
+            { icon: 'fa-light fa-cloud', text: 'Cloud sync' },
+            { icon: 'fa-light fa-share', text: 'Easy sharing' }
         ],
-        screenshots: ['map.png', 'stats.png', 'directions.png']
-    },
-    {
-        name: 'CrashOut',
-        icon: 'fa-light fa-chart-candlestick',
-        category: 'analytics',
-        description: 'Study space availability tracker with real-time occupancy and noise level monitoring.',
-        features: [
-            { icon: 'fa-light fa-chair', text: 'Space finder' },
-            { icon: 'fa-light fa-volume', text: 'Noise levels' },
-            { icon: 'fa-light fa-wifi', text: 'WiFi strength' },
-            { icon: 'fa-light fa-outlet', text: 'Power outlets' }
-        ],
-        screenshots: ['spaces.png', 'heatmap.png', 'metrics.png']
-    },
-    {
-        name: 'PartyTonight',
-        icon: 'fa-light fa-message-dots',
-        category: 'chat',
-        description: 'Campus events and meetups platform with real-time updates and RSVPs.',
-        features: [
-            { icon: 'fa-light fa-calendar-star', text: 'Event creation' },
-            { icon: 'fa-light fa-ticket', text: 'RSVP system' },
-            { icon: 'fa-light fa-map-location', text: 'Venue maps' },
-            { icon: 'fa-light fa-photo-film-music', text: 'Media sharing' }
-        ],
-        screenshots: ['events.png', 'rsvp.png', 'gallery.png']
-    },
-    {
-        name: 'InternMe',
-        icon: 'fa-light fa-code',
-        category: 'development',
-        isNew: true,
-        description: 'Internship and job board specifically for computer science and engineering students.',
-        features: [
-            { icon: 'fa-light fa-briefcase', text: 'Job matching' },
-            { icon: 'fa-light fa-file-code', text: 'Resume builder' },
-            { icon: 'fa-light fa-handshake', text: 'Interview prep' },
-            { icon: 'fa-light fa-building', text: 'Company profiles' }
-        ],
-        screenshots: ['jobs.png', 'resume.png', 'companies.png']
-    },
-    {
-        name: 'FreeFoodFinder',
-        icon: 'fa-light fa-bookmark-circle',
-        category: 'bookmarks',
-        description: 'Track and discover free food events on campus with real-time notifications.',
-        features: [
-            { icon: 'fa-light fa-pizza', text: 'Food spotting' },
-            { icon: 'fa-light fa-bell-plus', text: 'Event alerts' },
-            { icon: 'fa-light fa-filter', text: 'Dietary filters' },
-            { icon: 'fa-light fa-map-pin', text: 'Location tracking' }
-        ],
-        screenshots: ['events.png', 'map.png', 'filters.png']
-    },
-    {
-        name: 'Serbiz',
-        icon: 'fa-light fa-envelope-circle-check',
-        category: 'email',
-        description: 'Student services request system with automated tracking and notifications.',
-        features: [
-            { icon: 'fa-light fa-envelope-open-text', text: 'Request forms' },
-            { icon: 'fa-light fa-timeline', text: 'Status tracking' },
-            { icon: 'fa-light fa-file-check', text: 'Document upload' },
-            { icon: 'fa-light fa-messages-question', text: 'Support chat' }
-        ],
-        screenshots: ['requests.png', 'tracking.png', 'documents.png']
-    },
-    {
-        name: 'Pataygutom',
-        icon: 'fa-light fa-bowl-chopsticks',
-        category: 'food',
-        isNew: true,
-        description: 'Your AI food companion that recommends dishes and restaurants based on your personality, mood, and taste preferences.',
-        features: [
-            { icon: 'fa-light fa-brain-circuit', text: 'Personality-based matching' },
-            { icon: 'fa-light fa-face-smile-hearts', text: 'Mood detection' },
-            { icon: 'fa-light fa-chart-radar', text: 'Taste profile analysis' },
-            { icon: 'fa-light fa-map-location-dot', text: 'Restaurant finder' }
-        ],
-        screenshots: ['personality.png', 'recommendations.png', 'restaurants.png']
+        screenshots: ['notes.png', 'folders.png', 'sharing.png']
     }
 ];
+
 
 // App frame functionality
 function showApp(app) {
