@@ -21,7 +21,16 @@ function launchApp(url, appCard) {
         
         // Navigate after animation (matches our 0.2s design system transition)
         setTimeout(() => {
-            window.location.href = url;
+            // Handle external URLs
+            if (url.startsWith('http')) {
+                window.open(url, '_blank');
+                // Reset the card state for external links
+                appCard.classList.remove('launching');
+                appCard.style.color = '';
+                document.body.style.pointerEvents = '';
+            } else {
+                window.location.href = url;
+            }
         }, 160); // Slightly shorter than animation for smooth transition
     });
 }
@@ -56,8 +65,16 @@ document.addEventListener('click', (e) => {
     if (!appCard || isProcessingClick) return;
     
     const appName = appCard.querySelector('.app-name').textContent;
-    // Special handling for PriceDown app
-    const appUrl = appName === 'PriceDown' ? 'apps/pricedown/index.html' : `apps/${appName.toLowerCase()}.html`;
+    let appUrl;
+    
+    // Special handling for apps
+    if (appName === 'PriceDown') {
+        appUrl = 'apps/pricedown/index.html';
+    } else if (appName === 'TutorPh') {
+        appUrl = 'https://tutorph.netlify.app';
+    } else {
+        appUrl = `apps/${appName.toLowerCase()}.html`;
+    }
     
     // Prevent multiple rapid clicks using design system transition time
     isProcessingClick = true;
@@ -69,6 +86,20 @@ document.addEventListener('click', (e) => {
 
 // App data with descriptions and features
 const apps = [
+    {
+        name: 'TutorPh',
+        icon: 'fa-light fa-chalkboard-user',
+        category: 'education',
+        isNew: true,
+        description: 'Connect with expert tutors and enhance your learning experience.',
+        features: [
+            { icon: 'fa-light fa-users', text: 'Expert tutors' },
+            { icon: 'fa-light fa-video', text: 'Live sessions' },
+            { icon: 'fa-light fa-calendar-check', text: 'Flexible scheduling' },
+            { icon: 'fa-light fa-star', text: 'Quality education' }
+        ],
+        screenshots: ['dashboard.png', 'session.png', 'schedule.png']
+    },
     {
         name: 'ArcherEye',
         icon: 'fa-light fa-chart-mixed',
