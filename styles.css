@@ -24,6 +24,7 @@
     --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     
     /* App Colors */
+    /* Core App Colors */
     --app-red: #FF3B30;
     --app-blue: #007AFF;
     --app-green: #34C759;
@@ -34,6 +35,11 @@
     --app-teal: #5AC8FA;
     --app-indigo: #5856D6;
     --app-gray: #8E8E93;
+    
+    /* Custom App Colors */
+    --tutorph-color: #4CAF50;  /* Fresh educational green */
+    --notes-color: #FFC107;    /* Warm yellow for notes */
+    --calendar-color: #2196F3;  /* Clear sky blue */
 }
 
 * {

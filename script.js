@@ -90,6 +90,7 @@ const apps = [
         name: 'TutorPh',
         icon: 'fa-light fa-chalkboard-user',
         category: 'education',
+        color: 'var(--tutorph-color)',
         isNew: true,
         description: 'Connect with expert tutors and enhance your learning experience.',
         features: [
@@ -104,6 +105,7 @@ const apps = [
         name: 'Calendar',
         icon: 'fa-light fa-calendar-days',
         category: 'dashboard',
+        color: 'var(--calendar-color)',
         description: 'Smart calendar for managing your academic schedule and deadlines.',
         features: [
             { icon: 'fa-light fa-calendar-check', text: 'Schedule management' },
@@ -174,6 +176,7 @@ const apps = [
         name: 'Notes',
         icon: 'fa-light fa-note-sticky',
         category: 'documentation',
+        color: 'var(--notes-color)',
         description: 'Simple and efficient note-taking app for students.',
         features: [
             { icon: 'fa-light fa-pen', text: 'Quick notes' },
