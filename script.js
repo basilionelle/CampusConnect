@@ -283,7 +283,10 @@ function createAppCard(app) {
     
     const iconContainer = document.createElement('div');
     iconContainer.className = 'icon-container';
-    // Background color is now handled by CSS
+    // Use app's custom color if specified
+    if (app.color) {
+        iconContainer.style.background = app.color + ' !important';
+    }
     
     const icon = document.createElement('i');
     icon.className = app.icon;
@@ -301,12 +304,19 @@ function createAppCard(app) {
     
     // Add click handler for direct app launch
     card.addEventListener('click', () => {
-        // Only launch apps that have placeholder pages for now
-        const launchableApps = ['lovesalle', 'classsniper', 'parknow'];
         const appNameLower = app.name.toLowerCase();
-        
-        if (launchableApps.includes(appNameLower)) {
-            const appUrl = `apps/${appNameLower}.html`;
+        let appUrl;
+
+        // Special handling for specific apps
+        if (app.name === 'TutorPh') {
+            appUrl = 'https://tutorph.netlify.app';
+        } else if (['notes', 'calendar'].includes(appNameLower)) {
+            appUrl = `apps/${appNameLower}.html`;
+        } else if (['lovesalle', 'classsniper', 'parknow'].includes(appNameLower)) {
+            appUrl = `apps/${appNameLower}.html`;
+        }
+
+        if (appUrl) {
             launchApp(appUrl, card);
         }
     });
