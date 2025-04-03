@@ -1,6 +1,10 @@
-# CampusConnect
+<div align="center">
+  <img src="logo.png" alt="CampusConnect Logo" width="600">
+</div>
 
+<div align="center">
 A modern platform empowering student developers to showcase and discover tools that enhance the college experience. CampusConnect creates a collaborative ecosystem where students can share solutions to make academic life more manageable and engaging.
+</div>
 
 ## About
 
