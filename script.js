@@ -310,6 +310,8 @@ function createAppCard(app) {
         // Special handling for specific apps
         if (app.name === 'TutorPh') {
             appUrl = 'https://tutorph.netlify.app';
+        } else if (app.name === 'ArcherEye') {
+            appUrl = 'https://archer-eye.com/';
         } else if (['notes', 'calendar'].includes(appNameLower)) {
             appUrl = `apps/${appNameLower}.html`;
         } else if (['lovesalle', 'classsniper', 'parknow'].includes(appNameLower)) {

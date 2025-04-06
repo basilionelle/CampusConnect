@@ -489,12 +489,11 @@ body::after {
 
 
 /* App Card Colors */
-.app-card[data-name="ArcherEye"] .icon-container { background: #007AFF !important; } /* Blue */
-.app-card[data-name="HomeworkHelp"] .icon-container { background: #5856D6 !important; } /* Purple */
-.app-card[data-name="ClassSniper"] .icon-container { background: #34C759 !important; } /* Green */
-.app-card[data-name="StudyGroups"] .icon-container { background: #32ADE6 !important; } /* Light Blue */
-.app-card[data-name="TutorFinder"] .icon-container { background: #FF9500 !important; } /* Orange */
-.app-card[data-name="SwipeStudy"] .icon-container { background: #AF52DE !important; } /* Purple */
+.app-card[data-name="TutorPh"] .icon-container { background: var(--tutorph-color) !important; } /* Fresh educational green */
+.app-card[data-name="Notes"] .icon-container { background: var(--notes-color) !important; } /* Warm yellow */
+.app-card[data-name="Calendar"] .icon-container { background: var(--calendar-color) !important; } /* Clear sky blue */
+.app-card[data-name="ArcherEye"] .icon-container { background: var(--app-blue) !important; } /* Blue */
+.app-card[data-name="ClassSniper"] .icon-container { background: var(--app-green) !important; } /* Green */
 .app-card[data-name="PriceDown"] .icon-container { 
     background: #FFD700 !important;
     color: rgba(0, 0, 0, 0.7);
